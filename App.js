@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import File from './app/components/file.js'
+import IntroScreen from './app/components/IntroScreen.js'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.texttag}>This is where our App info will go.</Text>
-      <File />
+      {/* <Text style={styles.texttag}>This is where our App info will go.</Text>
+      <File /> */}
+      <IntroScreen />
       <StatusBar style="auto" />
     </View>
   );
@@ -15,8 +16,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
   },
