@@ -9,7 +9,7 @@ import IntroScreen from './app/components/IntroScreen.jsx'
 
 
 const Stack = createStackNavigator();
-
+ 
 export default function App() {
   return (
     <NavigationContainer>
