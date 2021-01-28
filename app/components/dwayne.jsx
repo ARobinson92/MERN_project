@@ -47,7 +47,7 @@ function Dwayne(props) {
                     <Text>SHOW THIS: {display}</Text>
                 ) : null
             }
-            <Text>{"\n"}{"\n"}{"\n"}***************************************</Text>
+            <Text>{"\n\n\n"}***************************************</Text>
             <Text>This should happen in the background</Text>
             <Text>***************************************</Text>
             <Text>Value 1 has been chosen: {values[0]['freq']} times</Text>
