@@ -5,10 +5,7 @@ import {
     StyleSheet,
     Text,
     View,
-    Button,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 
 //Two attributes, bottomBox and paragraph, will need to be rendered differently when displayed on a
 //desktop computer. There is a separate style component for each in the stylesheet under
@@ -48,7 +45,7 @@ function IntroScreen(props) {
                     </Text>
                 </View>
                 <View style={styles.bottomBox}>
-                    <Text style={styles.button} onPress={() => navigation.navigate("Dwayne")}>Begin</Text>
+                    <Text style={styles.button} onPress={() => navigation.navigate("Dwayne")}>To Dwayne.jsx</Text><Text style={styles.button} onPress={() => navigation.navigate("QuizScreen")}>To QuizScreen.jsx</Text>
                     <Text style={styles.attribution}>
                         Background Photo by Geran de Klerk on Unsplash
                     </Text>
@@ -65,29 +62,6 @@ function IntroScreen(props) {
 export default IntroScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-    },
-    texttag: {
-        color: "blue",
-        fontSize: 16,
-        padding: 35,
-        backgroundColor: "black",
-        borderStyle: "solid",
-        borderColor: "black",
-        borderRadius: 75,
-        height: 150,
-        width: 150,
-        overflow: "hidden",
-        alignItems: "center",
-        justifyContent: "space-evenly",
-    },
-    component: {
-        color: "white",
-        fontWeight: "bold",
-        fontSize: 25,
-        textDecorationStyle: "solid",
-    },
     appBox: {
         flex: 2,
         alignItems: "center",
@@ -130,11 +104,14 @@ const styles = StyleSheet.create({
         color: "#dad2cf",
         bottom: 8,
         width: "40%",
-        fontSize: 26,
+        fontSize: 15,
         textAlign: "center",
         borderRadius: 10,
         overflow: "hidden",
         padding: 4,
+    },
+    container: {
+        alignItems: "center",
     },
     logo: {
         height: 130,

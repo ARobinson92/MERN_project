@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import IntroScreen from "./app/components/IntroScreen.jsx";
 import Dwayne from "./app/components/dwayne.jsx";
+import QuizScreen from "./app/components/QuizScreen.jsx";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
             <Stack.Navigator headerMode="none" intialRouteName="IntroScreen">
                 <Stack.Screen name="IntroScreen" component={IntroScreen} />
                 <Stack.Screen name="Dwayne" component={Dwayne} />
+                <Stack.Screen name="QuizScreen" component={QuizScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Image, ImageBackground, StyleSheet, Text, View, Button } from "react-native";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import wordList from './wordList.jsx';
 
 function Dwayne(props) {
 
@@ -17,6 +18,7 @@ function Dwayne(props) {
 
     const handlePress = value => {
         setDisplay(value);
+        console.log(wordList());
         for(let i = 0; i < values.length; i++) {
             if(values[i]['value'] == value) {
                 setUpdate(i);
