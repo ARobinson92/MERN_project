@@ -23,13 +23,11 @@ function IntroScreen(props) {
     const { navigation } = props;
     return (
         <View style={styles.container}>
-            <View>
-                <View style={{ height: 0, flex: 0 }}>
-                    <ImageBackground
-                        source={require("../assets/geran-de-klerk-Jmw2Ardu2YM-unsplash.jpg")}
-                        style={styles.backgroundImage}
-                    />
-                </View>
+            <View style={styles.backgroundContainer}>
+                <ImageBackground
+                    source={require("../assets/geran-de-klerk-Jmw2Ardu2YM-unsplash.jpg")}
+                    style={styles.backgroundImage}
+                />
                 <View style={styles.appBox}>
                     <Text style={styles.appName} numberOfLines={1}>
                         Discovery
@@ -53,7 +51,7 @@ function IntroScreen(props) {
                         Logo designed by litonmee (Image #27510217 at
                         VectorStock.com)
                     </Text>
-                </View>
+                </View>   
             </View>
         </View>
     );
@@ -63,13 +61,17 @@ export default IntroScreen;
 
 const styles = StyleSheet.create({
     appBox: {
-        flex: 2,
+        position: 'absolute',
+        top: 20,
+        left: 10,
+        right: 10,
         alignItems: "center",
         justifyContent: "space-evenly",
         borderRadius: 10,
         top: 18,
     },
     appName: {
+        padding: 10,
         fontSize: 43,
         fontWeight: "bold",
         color: "#dad2cf",
@@ -77,24 +79,26 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
     },
     attribution: {
-        flex: 0,
         fontSize: 8,
         color: "darkgrey",
     },
-    backgroundImage: {
-        flex: 0,
-        height: 568,
-        width: 350,
+    backgroundContainer: {
+        flex: 1,
         resizeMode: "stretch",
-        overflow: "visible",
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: "stretch",
     },
     bottomBox: {
-        flex: 1.6,
-        justifyContent: "flex-end",
+        position: 'absolute',
+        bottom: 10,
+        left: 10,
+        right: 10,
+        //justifyContent: "flex-end",
         alignItems: "center",
     },
     bottomBoxDesktop: {
-        flex: 1.6,
         justifyContent: "flex-end",
         alignItems: "center",
         minHeight: 220,
@@ -111,7 +115,15 @@ const styles = StyleSheet.create({
         padding: 4,
     },
     container: {
-        alignItems: "center",
+        flex: 9,
+        resizeMode: 'stretch',
+    },
+    content: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
     },
     logo: {
         height: 130,
