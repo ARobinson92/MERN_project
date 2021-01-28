@@ -1,60 +1,48 @@
 import React, { useState } from "react";
 import { Image, ImageBackground, StyleSheet, Text, View, Button } from "react-native";
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 function Dwayne(props) {
 
     const { navigation } = props;
 
-    const [values, setValues] = useState([0, 0, 0, 0, 0]);
+    const [state, setState] = useState("");
+
+    const [values, setValues] = useState([
+        {label: "value 1", value: "Value 1 means you are temperemental"},
+        {label: "value 2", value: "Value 2 means you hate pizzas"},
+        {label: "value 3", value: "Value 3 means you love oreos"},
+        {label: "value 4", value: "Value 4 means you are a charming one"},
+        {label: "value 5", value: "Value 5 means you DID STOLE THOSE COOKIES"},
+    ])
+
+    const [display, setDisplay] = useState("");
 
     return (
         <View>
             <Text>hello from the Dwayne component</Text>
-            <Button
-                onPress={() => {
-                let temp = [...values];
-                temp[0]++;
-                setValues(temp);
+            {/* <Button 
+                onPress={()=>{
+                    // let temp = [...boops];
+                    // temp[0]++;
+                    setBoops({...boops, value2:5});
+                    console.log(boops['value2']);
                 }}
                 title="Value 1"
-            />
-            <Button
-                onPress={() => {
-                let temp = [...values];
-                temp[1]++;
-                setValues(temp);
+            /> */}
+            <RadioForm
+                radio_props={values}
+                initial={0}
+                onPress={(e) => {
+                    // this.setState({value:value})
+                    setDisplay(e);
                 }}
-                title="Value 2"
             />
-            <Button
-                onPress={() => {
-                let temp = [...values];
-                temp[3]++;
-                setValues(temp);
-                }}
-                title="Value 3"
-            />
-            <Button
-                onPress={() => {
-                let temp = [...values];
-                temp[3]++;
-                setValues(temp);
-                }}
-                title="Value 4"
-            />
-            <Button
-                onPress={() => {
-                let temp = [...values];
-                temp[4]++;
-                setValues(temp);
-                }}
-                title="Value 5"
-            />
-            <Text>Score of value 1: {values[0]}</Text>
-            <Text>Score of value 2: {values[1]}</Text>
-            <Text>Score of value 3: {values[2]}</Text>
-            <Text>Score of value 4: {values[3]}</Text>
-            <Text>Score of value 5: {values[4]}</Text>
+            {
+                display ? (
+                    <Text>SHOW THIS: {display}</Text>
+                ) : null
+            }
         </View>
     );
 }
