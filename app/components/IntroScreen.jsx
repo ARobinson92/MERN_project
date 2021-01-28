@@ -7,18 +7,6 @@ import {
     View,
 } from "react-native";
 
-//Two attributes, bottomBox and paragraph, will need to be rendered differently when displayed on a
-//desktop computer. There is a separate style component for each in the stylesheet under
-//bottomBoxDesktop and paragraphDesktop. The logic to make these appear when the site is
-//viewed from a desktop is in that tutorial from yesterday, but I haven't implemented it yet.
-
-//We also need to add functionality to the button by putting in an onPress function once the routing
-//is in place, as it will need to route the user to the quiz component.
-
-//Also, I can't load an android emulator because my computer does not have the same power as a
-//modern android phone. So, if someone could check to see that the site still looks okay,
-//that would be dope.
-
 function IntroScreen(props) {
     const { navigation } = props;
     return (
@@ -95,13 +83,7 @@ const styles = StyleSheet.create({
         bottom: 10,
         left: 10,
         right: 10,
-        //justifyContent: "flex-end",
         alignItems: "center",
-    },
-    bottomBoxDesktop: {
-        justifyContent: "flex-end",
-        alignItems: "center",
-        minHeight: 220,
     },
     button: {
         backgroundColor: "#004972",
@@ -132,21 +114,10 @@ const styles = StyleSheet.create({
     },
     paragraph: {
         color: "#004972",
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: "normal",
         width: 285,
         top: 12,
-        borderRadius: 20,
-        backgroundColor: "rgba(218, 210, 207, 0.6)",
-        textAlign: "center",
-        overflow: "hidden",
-        padding: 4,
-    },
-    paragraphDesktop: {
-        color: "#004972",
-        fontSize: 13,
-        fontWeight: "normal",
-        width: 285,
         borderRadius: 20,
         backgroundColor: "rgba(218, 210, 207, 0.6)",
         textAlign: "center",

@@ -11,27 +11,36 @@ function QuizScreen(props) {
 //Some of these will need to be eventually declared in app.js and sent here as additional props
 //so that they can be transferred to the results page
     const [loaded, setLoaded] = useState(false);
-    const [definitions, setDefinitions] = useState([]); //Will contain the definition from the API
     const [update, setUpdate] = useState(0); //Will be set to the index of the selected radiobutton
     const [values, setValues] = useState([]); //Will be filled with all of our words and definitions
-    const [singleVal, setSingleVal] = useState({
-        label: "",
-        value: "",
-        freq: 0,
-    }); //Will create an object that can be pushed to the values array
-
     const WordList = wordList();
-    
-    //1fd93f78-0bc6-4fd2-b7f4-0e5b6124d23d
+    let definitions = [];
+    let counter = 0;
+    //key=: 1fd93f78-0bc6-4fd2-b7f4-0e5b6124d23d
     useEffect(()=>{
         for (var i=0; i<WordList.length; i++) {
             var word = WordList[i];
             axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=1fd93f78-0bc6-4fd2-b7f4-0e5b6124d23d`)
-            .then(res => {
-                let defs = res.data[0].shortdef;
-                setDefinitions([...definitions, ...defs]);
-            }).catch(err=>{
-                console.log(err);
+            .then ((res) => {
+                console.log(res);
+                console.log('definitions: ', definitions);
+                var singleVal = {
+                    'label': res.data[0].meta.id,
+                    'value': res.data[0].shortdef,
+                    'freq': 0,
+                }
+                console.log('SingleVal: ', singleVal);
+                let temp = [...values];
+                temp.push(singleVal);
+                setValues(temp);
+                if(values.length >= WordList.length - 1) {
+                    console.log('Setting loaded to true');
+                    setLoaded(true);
+                }  
+            })
+            .catch(err=>{
+                console.log('There was an error: ', err)
+                Alert.alert("There was a problem loading the quiz. Please check your connection and try again.");
             });
         }
     },[]);
@@ -59,39 +68,36 @@ function QuizScreen(props) {
         navigation.navigate("IntroScreen");
     }
 
-    // <Text>Value 1 has been chosen: {values[0]['freq']} times</Text>
-    //         <Text>Value 2 has been chosen: {values[1]['freq']} times</Text>
-    //         <Text>Value 3 has been chosen: {values[2]['freq']} times </Text>
-    //         <Text>Value 4 has been chosen: {values[3]['freq']} times</Text>
-    //         <Text>Value 5 has been chosen: {values[4]['freq']} times</Text>
-
     return (
         <View>
+        {loaded?
             <View>
-                <Text style={styles.instructions}>Choose the option you care about LEAST from the values below:</Text>
-            </View>
-            <View>
-                <RadioForm
-                    radio_props={values}
-                    initial={-1}
-                    onPress={handlePress}
-                />
-            </View>
-            <View>
-                {
-                    definitions ? (
-                        <Text>SHOW THIS: {definitions}</Text>
-                    ) : null
-                }
-            </View>
-            <View>
-                <Text 
-                    onPress={buttonPress} 
-                    style={styles.button}>Continue</Text>
-                <Text onPress={returnHome} style={styles.button}>Temporary home button</Text>
-            </View>
-        </View>
-    );
+                <View>
+                    <Text style={styles.instructions}>Choose the option you care about LEAST from the values below:</Text>
+                </View>
+                <View>
+                    <RadioForm
+                        radio_props={values}
+                        initial={-1}
+                        onPress={handlePress}
+                    />
+                </View>
+                <View>
+                    {
+                        definitions ? (
+                            <Text>SHOW THIS: {definitions}</Text>
+                        ) : null
+                    }
+                </View>
+                <View>
+                    <Text 
+                        onPress={buttonPress} 
+                        style={styles.button}>Continue</Text>
+                    <Text onPress={returnHome} style={styles.button}>Temporary home button</Text>
+                </View>
+            </View>:
+            <Text>The quiz information is downloading.</Text>}
+        </View>);
 }
 
 export default QuizScreen;
