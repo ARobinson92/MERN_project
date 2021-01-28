@@ -56,7 +56,10 @@ function IntroScreen(props) {
                     VectorStock.com)
                 </Text>
             </View>
-            <Button onPress={() => navigation.navigate("Dwayne")} />
+            <Button 
+                onPress={() => navigation.navigate("Dwayne")} 
+                title="Tap on me to go to Dwayne"
+            />
         </View>
     );
 }
