@@ -26,40 +26,38 @@ function IntroScreen(props) {
     const { navigation } = props;
     return (
         <View style={styles.container}>
-            <View style={{ height: 0, flex: 0 }}>
-                <ImageBackground
-                    source={require("../assets/geran-de-klerk-Jmw2Ardu2YM-unsplash.jpg")}
-                    style={styles.backgroundImage}
-                />
+            <View>
+                <View style={{ height: 0, flex: 0 }}>
+                    <ImageBackground
+                        source={require("../assets/geran-de-klerk-Jmw2Ardu2YM-unsplash.jpg")}
+                        style={styles.backgroundImage}
+                    />
+                </View>
+                <View style={styles.appBox}>
+                    <Text style={styles.appName} numberOfLines={1}>
+                        Discovery
+                    </Text>
+                    <Image
+                        source={require("../assets/vectorstock_27510217.png")}
+                        style={styles.logo}
+                    />
+                    <Text style={styles.paragraph}>
+                        Inspired by the work of best-selling author Mark Manson, our
+                        goal is to help you uncover the values most important to you
+                        and use the power of reflection to acheive your goals.
+                    </Text>
+                </View>
+                <View style={styles.bottomBox}>
+                    <Text style={styles.button} onPress={() => navigation.navigate("Dwayne")}>Begin</Text>
+                    <Text style={styles.attribution}>
+                        Background Photo by Geran de Klerk on Unsplash
+                    </Text>
+                    <Text style={styles.attribution}>
+                        Logo designed by litonmee (Image #27510217 at
+                        VectorStock.com)
+                    </Text>
+                </View>
             </View>
-            <View style={styles.appBox}>
-                <Text style={styles.appName} numberOfLines={1}>
-                    Discovery
-                </Text>
-                <Image
-                    source={require("../assets/vectorstock_27510217.png")}
-                    style={styles.logo}
-                />
-                <Text style={styles.paragraph}>
-                    Inspired by the work of best-selling author Mark Manson, our
-                    goal is to help you uncover the values most important to you
-                    and use the power of reflection to acheive your goals.
-                </Text>
-            </View>
-            <View style={styles.bottomBox}>
-                <Text style={styles.button}>Begin</Text>
-                <Text style={styles.attribution}>
-                    Background Photo by Geran de Klerk on Unsplash
-                </Text>
-                <Text style={styles.attribution}>
-                    Logo designed by litonmee (Image #27510217 at
-                    VectorStock.com)
-                </Text>
-            </View>
-            <Button 
-                onPress={() => navigation.navigate("Dwayne")} 
-                title="Tap on me to go to Dwayne"
-            />
         </View>
     );
 }

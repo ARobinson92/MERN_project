@@ -64,6 +64,10 @@ function Dwayne(props) {
                     setValues(tempArr);
                 }}
             />
+            <Button
+                title="Home"
+                onPress={()=>{navigation.navigate("IntroScreen")}}
+            />
         </View>
     );
 }
