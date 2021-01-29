@@ -15,7 +15,7 @@ function QuizScreen({ navigation }) {
     const [update, setUpdate] = useState(0);
     const [values, setValues] = useState([]);
     const [counter, setCounter] = useState(0);
-    const [pointers, setPointers] = useState([0, 1, 2, 3, 4]);
+    const [pointers, setPointers] = useState([0, 1, 2, 3, 4, 5]);
     const [definitions, setDefinitions] = useState([]);
     const WordList = wordList();
     const styles = stylesheet();
@@ -137,6 +137,7 @@ function QuizScreen({ navigation }) {
                                         values[0][pointers[2]],
                                         values[0][pointers[3]],
                                         values[0][pointers[4]],
+                                        values[0][pointers[5]],
                                     ]}
                                     initial={-1}
                                     onPress={handlePress}
