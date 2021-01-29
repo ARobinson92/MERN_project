@@ -16,6 +16,7 @@ function wordList() {
         "Invention",
         "Diversity",
         "Generosity",
+        "Pornography",
         "Integrity",
         "Finesse",
         "Love",
