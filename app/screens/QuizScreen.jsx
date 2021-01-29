@@ -18,6 +18,7 @@ function QuizScreen({ navigation }) {
     const [pointers, setPointers] = useState([0, 1, 2, 3, 4, 5]);
     const [definitions, setDefinitions] = useState([]);
     const WordList = wordList();
+    const [showMe, setshowMe] = useState([]);
     const styles = stylesheet();
 
     useEffect(() => {
@@ -66,6 +67,13 @@ function QuizScreen({ navigation }) {
         if (counter == values[0].length - 5) {
             //If the counter gets to five less than the total number of words,
             setComplete(true); //The 'complete' state is set to TRUE, revealing the results section.
+            let tempReturn = [];
+            for (let i = 0; i < 6; i++) {
+                if (values[0][pointers[i]]["freq"] == 0) {
+                    tempReturn.push(values[0][pointers[i]]["label"]);
+                }
+            }
+            setshowMe(tempReturn);
         }
         let tempArr = [...values[0]]; //Every time, the frequency value of update, which was set above, is incremented...
         tempArr[update]["freq"]++;
@@ -101,21 +109,11 @@ function QuizScreen({ navigation }) {
                         <Text style={styles.header}>Your results:</Text>
                     </View>
                     <View style={styles.formContainer}>
-                        <Text style={styles.result}>
-                            {values[0][pointers[0]]["label"]}
-                        </Text>
-                        <Text style={styles.result}>
-                            {values[0][pointers[1]]["label"]}
-                        </Text>
-                        <Text style={styles.result}>
-                            {values[0][pointers[2]]["label"]}
-                        </Text>
-                        <Text style={styles.result}>
-                            {values[0][pointers[3]]["label"]}
-                        </Text>
-                        <Text style={styles.result}>
-                            {values[0][pointers[4]]["label"]}
-                        </Text>
+                        <Text style={styles.result}>{showMe[0]}</Text>
+                        <Text style={styles.result}>{showMe[1]}</Text>
+                        <Text style={styles.result}>{showMe[2]}</Text>
+                        <Text style={styles.result}>{showMe[3]}</Text>
+                        <Text style={styles.result}>{showMe[4]}</Text>
                     </View>
                 </View>
             ) : (
