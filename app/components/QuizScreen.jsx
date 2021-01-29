@@ -14,9 +14,10 @@ function QuizScreen(props) {
     const [update, setUpdate] = useState(0); //Will be set to the index of the selected radiobutton
     const [values, setValues] = useState([]); //Will be filled with all of our words and definitions
     const WordList = wordList();
+    const [counter, setCounter] = useState(0)
     const [pointers, setPointers] = useState([0,1,2,3,4]);
     const [definitions, setDefinitions] = useState([]);
-    let counter = 0;
+
     //key=: 1fd93f78-0bc6-4fd2-b7f4-0e5b6124d23d
     useEffect(()=>{
         let temp = [];
@@ -58,22 +59,21 @@ function QuizScreen(props) {
     }
 
     const buttonPress = () => {
+        setCounter(counter + 1);
+        if(counter == values[0].length - 5) {
+            navigation.navigate("Dwayne");
+        }
         let tempArr = [...values[0]];
-        console.log(tempArr);
         tempArr[update]['freq']++;
         values.pop();
         values.push(tempArr);
-        console.log(values);
         let temp = [...pointers];
         // Alert.alert('Value : ' + tempArr[update]['freq']);
         for(let i = 0; i < pointers.length; i++) {
             if(temp[i] == update) {
-                // delete temp[i];
-                console.log("DELETED TEMP: ", temp[i]);
                 for(let j = 0; j < values[0].length; j++) {
                     if(!temp.includes(j) && values[0][j]['freq'] != 1) {
                         temp[i] = j;
-                        console.log("TEMP IS NOW: ", temp);
                         i = pointers.length;
                         break;
                     }
