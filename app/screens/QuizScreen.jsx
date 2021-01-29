@@ -84,6 +84,7 @@ function QuizScreen({ navigation }) {
                 }
             }
         }
+        setDefinitions("");
         setPointers(temp); //And returned to it's state in 'pointer'.
     };
 
@@ -95,7 +96,26 @@ function QuizScreen({ navigation }) {
         <View style={styles.appPageContainer}>
             {complete ? (
                 <View style={styles.appPageContainer}>
-                    <Text>THIS IS WHERE OUR RESULTS INFO WILL GO.</Text>
+                    <View style={styles.headerContainer}>
+                        <Text style={styles.header}>Your results:</Text>
+                    </View>
+                    <View style={styles.formContainer}>
+                        <Text style={styles.result}>
+                            {values[0][pointers[0]]["label"]}
+                        </Text>
+                        <Text style={styles.result}>
+                            {values[0][pointers[1]]["label"]}
+                        </Text>
+                        <Text style={styles.result}>
+                            {values[0][pointers[2]]["label"]}
+                        </Text>
+                        <Text style={styles.result}>
+                            {values[0][pointers[3]]["label"]}
+                        </Text>
+                        <Text style={styles.result}>
+                            {values[0][pointers[4]]["label"]}
+                        </Text>
+                    </View>
                 </View>
             ) : (
                 <View style={styles.appPageContainer}>

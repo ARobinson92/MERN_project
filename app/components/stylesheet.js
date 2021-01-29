@@ -80,7 +80,6 @@ function stylesheet() {
         },
         definitionsContainer: {
             left: "5%",
-            // marginRight: 50,
             maxWidth: "90%",
             flex: 1,
             fontSize: 10,
@@ -113,6 +112,9 @@ function stylesheet() {
         },
         headerContainer: {
             flex: 1,
+        },
+        result: {
+            fontSize: 22,
         },
         logo: {
             width: 85,
