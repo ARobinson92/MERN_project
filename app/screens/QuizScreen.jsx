@@ -23,14 +23,15 @@ function QuizScreen({ navigation }) {
     useEffect(() => {
         let temp = [];
         for (var i = 0; i < WordList.length; i++) {
-            var word = WordList[i];
+            const word = WordList[i];
             axios
                 .get(
                     `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=1fd93f78-0bc6-4fd2-b7f4-0e5b6124d23d`
                 )
                 .then((res) => {
+                    console.log(res.data[0]);
                     var singleVal = {
-                        label: res.data[0].meta.id,
+                        label: word,
                         value: res.data[0].shortdef,
                         freq: 0,
                     };
@@ -71,7 +72,7 @@ function QuizScreen({ navigation }) {
         values.pop();
         values.push(tempArr); //...and returned to the values array.
         let temp = [...pointers];
-        Alert.alert("Value : " + tempArr[update]["freq"]); //An alert lets user know that the value was incremented
+        // Alert.alert("Value : " + tempArr[update]["freq"]); //An alert lets user know that the value was incremented
         for (let i = 0; i < pointers.length; i++) {
             if (temp[i] == update) {
                 //Whichever pointer is pointing at the value the user selected...

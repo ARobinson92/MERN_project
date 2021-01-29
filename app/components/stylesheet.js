@@ -115,6 +115,10 @@ function stylesheet() {
         },
         result: {
             fontSize: 22,
+            color: "#0000ff",
+            backgroundColor: "#add8e6",
+            fontWeight: "normal",
+            padding: 6,
         },
         logo: {
             width: 85,
