@@ -7,8 +7,8 @@ import {
     View,
 } from "react-native";
 
-function IntroScreen(props) {
-    const { navigation } = props;
+function IntroScreen({navigation}) {
+    // setState({foo:"bar"})
     return (
         <View style={styles.container}>
             <View style={styles.backgroundContainer}>
@@ -39,7 +39,10 @@ function IntroScreen(props) {
                         Logo designed by litonmee (Image #27510217 at
                         VectorStock.com)
                     </Text>
-                </View>   
+                </View> 
+                <View style={styles.bottomBox}>
+                    <Text style={styles.button} onPress={()=> navigation.navigate("Results")}>Results</Text>
+                </View>  
             </View>
         </View>
     );

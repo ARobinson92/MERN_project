@@ -4,15 +4,15 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 import wordList from './wordList.jsx';
 import axios from 'axios';
 
-
 function QuizScreen(props) {
-    const { navigation } = props;
+    const { navigation, globalState } = props;
+    const [ valuesList, setValuesList ] = globalState;
 
 //Some of these will need to be eventually declared in app.js and sent here as additional props
 //so that they can be transferred to the results page
     const [loaded, setLoaded] = useState(false);
-    const [update, setUpdate] = useState(0); //Will be set to the index of the selected radiobutton
-    const [values, setValues] = useState([]); //Will be filled with all of our words and definitions
+    const [update, setUpdate] = useState(0); 
+    const [values, setValues] = useState([]); 
     const WordList = wordList();
     const [counter, setCounter] = useState(0)
     const [pointers, setPointers] = useState([0,1,2,3,4]);
@@ -49,7 +49,7 @@ function QuizScreen(props) {
 
     const handlePress = value => {
         setDefinitions(value);
-        Alert.alert(wordList);
+        // Alert.alert(wordList);
         for(let i = 0; i < values[0].length; i++) {
             if(values[0][i]['value'] == value) {
                 setUpdate(i);
@@ -68,7 +68,7 @@ function QuizScreen(props) {
         values.pop();
         values.push(tempArr);
         let temp = [...pointers];
-        // Alert.alert('Value : ' + tempArr[update]['freq']);
+        Alert.alert('Value : ' + tempArr[update]['freq']);
         for(let i = 0; i < pointers.length; i++) {
             if(temp[i] == update) {
                 for(let j = 0; j < values[0].length; j++) {

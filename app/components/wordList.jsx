@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 function wordList() {
     return (
@@ -20,14 +21,17 @@ function wordList() {
             'Finesse',
             'Love',
             'Openness',
+            'Hedonism',
             'Religion',
             'Order',
             'Advancement',
             'Playfulness',
             'Forgiveness',
             'Excitement',
+            'Flatulence',
             'Change',
             'Goodness',
+            'Cannibalism',
             'Involvement',
             'Faith',
             'Wisdom',
@@ -45,6 +49,7 @@ function wordList() {
             'Excellence',
             'Innovation',
             'Quality',
+            'Communism',
             'Commonality',
             'Contributing',
             'Spiritualism',
