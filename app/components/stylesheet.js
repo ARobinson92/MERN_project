@@ -1,10 +1,8 @@
-import React from 'react';
+import React from "react";
 import { StyleSheet } from "react-native";
 
-
 function stylesheet() {
-    
-const stylesheet = StyleSheet.create({
+    const stylesheet = StyleSheet.create({
         announcement: {
             flex: 1,
             alignItems: "center",
@@ -15,7 +13,7 @@ const stylesheet = StyleSheet.create({
             left: 10,
             right: 10,
             borderRadius: 10,
-            position: 'absolute',
+            position: "absolute",
             alignItems: "center",
             justifyContent: "space-evenly",
         },
@@ -34,7 +32,7 @@ const stylesheet = StyleSheet.create({
             bottom: 0,
             position: "absolute",
             justifyContent: "center",
-            backgroundColor: '#F6F4F4',
+            backgroundColor: "#F6F4F4",
             alignContent: "space-between",
         },
         attribution: {
@@ -54,7 +52,7 @@ const stylesheet = StyleSheet.create({
             right: 10,
             bottom: 10,
             alignItems: "center",
-            position: 'absolute',
+            position: "absolute",
         },
         button: {
             margin: 8,
@@ -65,42 +63,53 @@ const stylesheet = StyleSheet.create({
             color: "#51A0D5",
             borderRadius: 10,
             overflow: "hidden",
-            alignSelf: 'center',
+            alignSelf: "center",
             textAlign: "center",
             backgroundColor: "#004972",
         },
         container: {
             flex: 9,
-            resizeMode: 'stretch',
+            resizeMode: "stretch",
         },
         content: {
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            position: 'absolute',
+            position: "absolute",
+        },
+        definitionsContainer: {
+            left: "5%",
+            // marginRight: 50,
+            maxWidth: "90%",
+            flex: 1,
+            fontSize: 10,
+            color: "#0D0709",
         },
         formContainer: {
             flex: 2,
+            right: "10%",
             marginTop: 60,
             marginLeft: 20,
-            position: 'relative',
+            alignSelf: "center",
+            textAlign: "center",
+            position: "relative",
         },
         header: {
             top: 0,
             left: 0,
             right: 0,
-            padding:20,
+            padding: 20,
             fontSize: 32,
-            marginBottom:15,
-            shadowRadius:30,
-            color: '#F6F4F4',
+            marginBottom: 15,
+            shadowRadius: 30,
+            color: "#F6F4F4",
             shadowOpacity: 0.8,
-            shadowColor: 'grey',
-            position: 'absolute',
+            shadowColor: "grey",
+            position: "absolute",
             borderBottomWidth: 1,
-            backgroundColor: '#51A0D5',
-            borderBottomColor: 'black',
+            backgroundColor: "#51A0D5",
+            borderBottomColor: "black",
         },
         headerContainer: {
             flex: 1,
@@ -125,11 +134,11 @@ const stylesheet = StyleSheet.create({
         normal: {
             flex: 1,
             fontSize: 10,
-            color: '#0D0709',
+            color: "#0D0709",
         },
         radioform: {
-            color: '#0D0709',
-            position: 'relative',
+            color: "#0D0709",
+            position: "relative",
         },
         textContainer: {
             flex: 2,
