@@ -14,28 +14,29 @@ function QuizScreen(props) {
     const [update, setUpdate] = useState(0); //Will be set to the index of the selected radiobutton
     const [values, setValues] = useState([]); //Will be filled with all of our words and definitions
     const WordList = wordList();
-    let definitions = [];
+    const [definitions, setDefinitions] = useState([]);
     let counter = 0;
     //key=: 1fd93f78-0bc6-4fd2-b7f4-0e5b6124d23d
     useEffect(()=>{
+        let temp = [];
         for (var i=0; i<WordList.length; i++) {
             var word = WordList[i];
             axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=1fd93f78-0bc6-4fd2-b7f4-0e5b6124d23d`)
             .then ((res) => {
-                console.log(res);
-                console.log('definitions: ', definitions);
+                // console.log(res);
+                // console.log('definitions: ', definitions);
                 var singleVal = {
                     'label': res.data[0].meta.id,
                     'value': res.data[0].shortdef,
                     'freq': 0,
                 }
-                console.log('SingleVal: ', singleVal);
-                let temp = [...values];
                 temp.push(singleVal);
-                setValues(temp);
-                if(values.length >= WordList.length - 1) {
+                console.log(temp);
+                if(temp.length >= WordList.length) {
                     console.log('Setting loaded to true');
+                    values.push(temp);
                     setLoaded(true);
+                    console.log("VALUES IS: ", values);
                 }  
             })
             .catch(err=>{
@@ -48,8 +49,8 @@ function QuizScreen(props) {
     const handlePress = value => {
         setDefinitions(value);
         Alert.alert(wordList);
-        for(let i = 0; i < values.length; i++) {
-            if(values[i]['value'] == value) {
+        for(let i = 0; i < values[0].length; i++) {
+            if(values[0][i]['value'] == value) {
                 setUpdate(i);
                 break;
             }
@@ -57,11 +58,13 @@ function QuizScreen(props) {
     }
 
     const buttonPress = () => {
-        let tempArr = [...values];
-        let tempNum = update + 1;
+        let tempArr = [...values[0]];
+        console.log(tempArr);
         tempArr[update]['freq']++;
-        setValues(tempArr);
-        Alert.alert('Value' + tempNum + ' : ' + tempArr[update]['freq']);
+        values.pop();
+        values.push(tempArr);
+        console.log(values);
+        Alert.alert('Value : ' + tempArr[update]['freq']);
     }
 
     const returnHome = () => {
@@ -77,15 +80,19 @@ function QuizScreen(props) {
                 </View>
                 <View>
                     <RadioForm
-                        radio_props={values}
+                        radio_props={values[0]}
                         initial={-1}
                         onPress={handlePress}
                     />
                 </View>
                 <View>
                     {
-                        definitions ? (
-                            <Text>SHOW THIS: {definitions}</Text>
+                        definitions.length != 0 ? (
+                            <View>
+                                <Text>Definition 1: {definitions[0]}</Text>
+                                <Text>Definition 2: {definitions[1]}</Text>
+                                <Text>Definition 3: {definitions[2]}</Text>
+                            </View>
                         ) : null
                     }
                 </View>
